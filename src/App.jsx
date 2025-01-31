@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import CategoryPage from './pages/CategoryPage'
 import ProductPage from './pages/productPage'
 import WishlistPage from './pages/WishList'
+import CartPage from './pages/Cart'
 import { Navigate } from 'react-router-dom'
 
 import './App.css'
@@ -16,8 +17,9 @@ function App() {
           <Route path='/' element={<Layout />}>
           <Route index element={<Home />}/>
           <Route path='/category/:categoryName' element={<CategoryPage />}/>
-          <Route path='/product' element={<ProductPage />}/>
-          <Route path='whishlist' element={<WishlistPage />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path='/whishlist' element={<WishlistPage />} />
+          <Route path='/cart' element={<CartPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

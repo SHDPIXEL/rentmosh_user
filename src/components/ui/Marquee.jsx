@@ -23,6 +23,10 @@ const MarqueeComponent = () => {
     {
         icon: <CreditCard />,
         title: "No Cost EMI"
+    },
+    {
+        icon: <CreditCard />,
+        title: "No Cost EMI"
     }
 ]
 

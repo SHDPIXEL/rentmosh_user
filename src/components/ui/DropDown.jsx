@@ -38,13 +38,13 @@ const Dropdown = ({ options, selectedOption, onSelect, label }) => {
                 <ChevronDown className="w-4 h-4 text-gray-500" />
             </button>
             {isOpen && (
-                <div className="absolute left-0 z-10 w-40 mt-2 bg-white border rounded-md shadow-lg">
+                <div className="absolute left-0 z-10 w-40 mt-2 bg-white rounded-md shadow-[0_-3px_6px_-3px_rgba(0,0,0,0.1)]">
                     <ul className="p-2 text-sm text-gray-700">
                         {options.map((option, index) => (
                             <li
                                 key={index}
                                 onClick={() => handleSelect(option)}
-                                className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                                className="px-3 py-2 hover:bg-gray-100 rounded-md cursor-pointer"
                             >
                                 {option}
                             </li>

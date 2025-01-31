@@ -44,6 +44,26 @@ const CategoryPage = () => {
         reviews: 128,
         images: [sofa, sofa, sofa],
         offers: "Free Delivery"
+    },
+    {
+        id: 1,
+        title: "Product Name",
+        price: 299.99,
+        discount: 15,
+        rating: 4.5,
+        reviews: 128,
+        images: [sofa, sofa, sofa],
+        offers: "Free Delivery"
+    },
+    {
+        id: 1,
+        title: "Product Name",
+        price: 299.99,
+        discount: 15,
+        rating: 4.5,
+        reviews: 128,
+        images: [sofa, sofa, sofa],
+        offers: "Free Delivery"
     }];
 
     return (<>
@@ -52,10 +72,10 @@ const CategoryPage = () => {
             <p className="text-gray-600 capitalize">Displaying products for {categoryName}</p>
         </div>
 
-        <div className="grid grid-cols-3 space-y-10">
+        <div className="grid grid-cols-4 gap-y-10 justify-between">
             {
                 products.map((product, index) => (
-                    <ProductCard product={product} />
+                    <ProductCard product={product} key={product.id}  />
                 ))
             }
         </div>

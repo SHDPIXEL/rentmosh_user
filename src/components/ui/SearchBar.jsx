@@ -1,37 +1,64 @@
-import { useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import { Search, X } from "lucide-react";
 
 const SearchBar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isFocused, setIsFocused] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef(null);
 
-  const handleClear = () => {
-    setSearchQuery('');
-  };
+  // Close search bar when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   return (
-    <div className={`relative flex flex-grow items-center w-96 h-10 rounded-md border transition-all duration-200 ${
-      isFocused ? 'border-gray-400 shadow-sm' : 'border-gray-200'
-    }`}>
-      <div className="flex items-center justify-center w-10 h-full pointer-events-none">
-        <Search className="w-4 h-4 text-gray-400" />
-      </div>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        placeholder="Search Furniture..."
-        className="w-full h-full px-2 bg-transparent text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none"
-      />
-      {searchQuery && (
-        <button
-          onClick={handleClear}
-          className="flex items-center justify-center w-10 h-full hover:text-gray-600"
-        >
-          <X className="w-4 h-4 text-gray-400 hover:text-gray-600 transition-colors" />
-        </button>
+    <div className="relative">
+      {/* Search Icon Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="p-2 rounded-md hover:bg-gray-300 transition"
+      >
+        <Search className="w-5 h-5 text-gray-600" />
+      </button>
+
+      {/* Full-width Search Bar */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-[#00000099]  flex items-center justify-center z-50">
+          <div
+            ref={inputRef}
+            className="fixed top-[calc(50%-90px)] left-1/2 w-[45%] transform -translate-x-1/2 bg-white border border-gray-300 rounded-2xl shadow-lg p-3"
+          >
+            <div className="flex items-center">
+              <Search className="w-5 h-5 text-gray-400 mr-3" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Furniture..."
+                className="w-full bg-transparent text-gray-900 placeholder-gray-400  outline-none text-lg"
+                autoFocus
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="p-1 rounded-md text-gray-400 hover:text-gray-600 transition"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

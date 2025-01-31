@@ -2,7 +2,7 @@ const Modal = ({ isOpen, onClose, cityList, onCitySelect }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-gray-500/60 bg-opacity-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-[#00000099] flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-lg">
                 <div className="text-lg font-bold text-gray-700 mb-4">Select a City</div>
                 <div className="space-y-4 grid grid-cols-2 gap-x-10">

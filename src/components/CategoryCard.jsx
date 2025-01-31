@@ -10,7 +10,7 @@ const CategoryCard = ({ title, image, bgColor = "bg-indigo-600" }) => {
     return (
         <div
             onClick={handleClick} 
-            className={`group relative flex-shrink-0 w-48 h-52 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-lg ${bgColor} cursor-pointer`}
+            className={`group relative flex-shrink-0 w-48 h-52 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-sm ${bgColor} cursor-pointer`}
         >
             {/* Title Section */}
             <div className="absolute top-0 left-0 p-4 z-10">
