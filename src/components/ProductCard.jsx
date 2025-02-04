@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="w-72 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="w-72 bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-md hover:scale-101 transition-shadow duration-300 mb-3">
       {/* Main Image Section */}
       <div className="relative h-64 rounded-t-xl overflow-hidden">
         <img 
@@ -101,3 +101,5 @@ const ProductCard = ({ product }) => {
   );
 };
 export default ProductCard;
+
+

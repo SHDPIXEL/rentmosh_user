@@ -18,7 +18,7 @@ const CategoryCard = ({ title, image, bgColor = "bg-indigo-600" }) => {
             </div>
 
             {/* Image Container */}
-            <div className="absolute bottom-0 w-full h-40 bg-white rounded-t-2xl p-3 transition-transform duration-300 group-hover:scale-105">
+            <div className="absolute bottom-0 w-full h-40 bg-white rounded-t-2xl p-3 border border-gray-200 transition-transform duration-300 group-hover:scale-105">
                 <div className="w-full h-full flex items-center justify-center">
                     <img 
                         src={image} 

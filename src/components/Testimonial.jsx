@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,39 +104,6 @@ const Testimonials = () => {
   return (
     <div className="relative w-full max-w-7xl mx-auto mb-5">
       {/* Navigation Arrows (Outside Carousel) */}
-      <button
-        onClick={prevSlide}
-        className="absolute -left-17 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 hover:bg-white transition-colors duration-300 shadow-md z-10"
-      >
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          viewBox="0 0 512 512"
-          height="1.5em"
-          width="1.5em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"></path>
-        </svg>
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute -right-17 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 hover:bg-white transition-colors duration-300 shadow-md z-10"
-      >
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          viewBox="0 0 512 512"
-          height="1.5em"
-          width="1.5em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"></path>
-        </svg>
-      </button>
 
       {/* Carousel Container */}
       <div className="overflow-hidden rounded-xl bg-gray-100 shadow-sm p-6 relative">
@@ -180,7 +148,24 @@ const Testimonials = () => {
               ))}
             </div>
           ))}
+
         </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 
+          hover:bg-white transition-colors duration-300"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 
+          hover:bg-white transition-colors duration-300"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
 
         {/* Dots Navigation */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">

@@ -63,7 +63,7 @@ const WishlistPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
@@ -83,7 +83,7 @@ const WishlistPage = () => {
           {wishlistItems.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
+              className="bg-white rounded-xl border border-gray-200 shadow-sm w-full hover:shadow-md transition-shadow duration-300 p-4"
             >
               <div className="flex items-center space-x-4">
                 {/* Product Image */}

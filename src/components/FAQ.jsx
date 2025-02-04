@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FAQS from "../assets/images/faqs.jpg"
 
 const faqs = [
   {
@@ -47,18 +48,28 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="faq-section py-8 px-4">
-      <div className="faq-list space-y-6">
+    <div className="faq-section py-8 px-4 flex justify-between items-start">
+      {/* Static Image on the left */}
+      <div className="faq-image w-1/3 justify-center">
+        <img
+          src={FAQS} // Static image URL
+          alt="FAQ Icon"
+          className="w-full h-auto object-cover rounded-md"
+        />
+      </div>
+
+      {/* FAQ Content on the right */}
+      <div className="faq-list w-2/3 space-y-6">
         {faqs.map((faq, index) => (
           <div
             key={faq.id}
-            className="faq-item bg-white border-b border-gray-300 rounded-md p-4"
+            className="faq-item bg-white border-b border-gray-300 p-4"
           >
             <div
               className="faq-question flex justify-between items-center cursor-pointer"
               onClick={() => toggleAnswer(index)}
             >
-              <h3 className="text-xl font-semibold text-gray-700">
+              <h3 className="text-xl text-gray-700">
                 {faq.question}
               </h3>
               <svg

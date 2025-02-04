@@ -5,14 +5,14 @@ import { FaCheckCircle } from "react-icons/fa"; // Import the green tickmark ico
 const cards = [
   {
     id: 1,
-    title: "Discover & Rent",
+    title: "Discover & Confirm Booking",
     description: "Find what you need, and we’ll make it happen!",
     icon: "https://d3juy0zp6vqec8.cloudfront.net/images/icons/browse_order_icn.svg",
     number: "1",
   },
   {
     id: 2,
-    title: "Confirm & Secure Your Booking",
+    title: "Payment & KYC Verification",
     description: "Confirm rental plans that fit your needs.",
     icon: "https://d3juy0zp6vqec8.cloudfront.net/images/icons/kyc_pick_delivery_slot_icn.svg",
     number: "2",
@@ -45,7 +45,7 @@ const Card = ({ title, description, icon, number }) => {
         )}
       </div>
       {/* Title */}
-      <h3 className="text-xl font-semibold text-gray-900 mt-4">{title}</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mt-4">{title}</h3>
       {/* Description */}
       {/* <p className="text-gray-500 text-sm mt-2">{description}</p> */}
       {/* Number Indicator */}

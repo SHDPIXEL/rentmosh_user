@@ -7,6 +7,7 @@ import city from "../assets/images/city.jpg";
 import { Link } from "react-router-dom";
 import WishlistPage from "../pages/WishList";
 import LoginModal from "../pages/LoginModal"; // Import the login modal component
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Header = () => {
   const [selectedCity, setSelectedCity] = useState("Mumbai");
@@ -46,48 +47,54 @@ const Header = () => {
 
   return (
     <header>
-      <div className="flex items-center justify-between space-x-10 px-24 h-16 shadow-sm">
-        <div className="flex items-center space-x-8">
-          <Link to="/">
-            <div className="poppins-bold text-2xl text-gray-600">RentMosh</div>
-          </Link>
-          <div className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
-            <MapPin className="w-5 h-5 text-gray-700" />
-            <div
-              className="text-gray-700 cursor-pointer"
-              onClick={() => setIsModalOpen(true)}
-            >
-              {selectedCity}
+      <div className="flex items-center justify-center px-30 h-16 shadow-sm">
+        <div className="flex items-center justify-between gap-37 space-x-10 ">
+          <div className="flex items-center space-x-8 ">
+            <Link to="/">
+              <div className="poppins-bold text-2xl text-gray-600">
+                RentMosh
+              </div>
+            </Link>
+            <div className="flex items-center p-2 hover:bg-gray-100 rounded-md">
+              <i className="fas fa-map-pin text-black w-5 h-5"></i>
+              <div
+                className="text-gray-700 cursor-pointer"
+                onClick={() => setIsModalOpen(true)}
+              >
+                {selectedCity}
+              </div>
             </div>
           </div>
-        </div>
-        {/* Center bottom dropdowns */}
-        <div className="flex justify-center">
-          {dropdownData.map((category, index) => (
-            <Dropdown
-              key={index}
-              options={category.items}
-              selectedOption={selectedCategories[category.label] || null}
-              onSelect={(item) => handleCategorySelect(category.label, item)}
-              label={category.label}
-            />
-          ))}
-        </div>
-        <div className="flex items-center space-x-4">
-          <SearchBar />
-          <div className="flex items-center space-x-5">
-            <Link to={"/whishlist"}>
-              <Heart className="w-5 h-5 text-gray-700 cursor-pointer " />
-            </Link>
-            <Link to={"/cart"}>
-              <ShoppingCart className="w-5 h-5 text-gray-700 cursor-pointer" />
-            </Link>
-            <div
-              className="flex items-center gap-2 hover:bg-gray-100 rounded-md p-2 cursor-pointer"
-              onClick={() => setIsLoginModalOpen(true)} // Open login modal on click
-            >
-              <CircleUser className="w-5 h-5 text-gray-700 rounded-md" />
-              <div>Login</div>
+          {/* Center bottom dropdowns */}
+          <div className="flex justify-center">
+            {dropdownData.map((category, index) => (
+              <Dropdown
+                key={index}
+                options={category.items}
+                selectedOption={selectedCategories[category.label] || null}
+                onSelect={(item) => handleCategorySelect(category.label, item)}
+                label={category.label}
+              />
+            ))}
+          </div>
+          <div className="flex items-center space-x-4 ">
+            <div className="hover:bg-gray-100 items-center rounded-md cursor-pointer">
+              <SearchBar />
+            </div>
+            <div className="flex items-center space-x-4">
+              <Link to={"/whishlist"} className="hover:bg-gray-100 p-2 rounded-md">
+                <Heart className="w-5 h-5 text-gray-700 cursor-pointer " />
+              </Link>
+              <Link to={"/cart"} className="hover:bg-gray-100 p-2 rounded-md">
+                <ShoppingCart className="w-5 h-5 text-gray-700 hover:bg-gray-100 cursor-pointer" />
+              </Link>
+              <div
+                className="flex items-center gap-1 hover:bg-gray-100 rounded-md p-2 cursor-pointer"
+                onClick={() => setIsLoginModalOpen(true)} // Open login modal on click
+              >
+                <i className="fas fa-user-circle text-gray-700 w-5"></i>
+                <div>Login</div>
+              </div>
             </div>
           </div>
         </div>
@@ -101,7 +108,7 @@ const Header = () => {
       />
 
       <LoginModal
-        isOpen={isLoginModalOpen} 
+        isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)} // Close login modal
       />
     </header>

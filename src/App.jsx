@@ -5,6 +5,10 @@ import CategoryPage from './pages/CategoryPage'
 import ProductPage from './pages/productPage'
 import WishlistPage from './pages/WishList'
 import CartPage from './pages/Cart'
+import ProfilePage from './pages/ProfilePage'
+import BookedPage from './pages/BookedPage'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsandCondition from './pages/TermsandCondition'
 import { Navigate } from 'react-router-dom'
 
 import './App.css'
@@ -20,6 +24,10 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path='/whishlist' element={<WishlistPage />} />
           <Route path='/cart' element={<CartPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/booked' element={<BookedPage />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+          <Route path='/terms-condition' element={<TermsandCondition />} />
           <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

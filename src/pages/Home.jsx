@@ -6,7 +6,7 @@ import OffersCard from "../components/OffersCard";
 import MarqueeComponent from "../components/ui/Marquee";
 import Testimonial from "../components/Testimonial";
 import StepstoBook from "../components/StepstoBook";
-import FAQ from "../components/FAQ"
+import FAQ from "../components/FAQ";
 const Home = () => {
   const categoryDetail = [
     { title: "Sofa", image: sofa, bgColor: "bg-blue-400" },
@@ -79,9 +79,9 @@ const Home = () => {
 
   return (
     <div className="px-4 w-full">
-      <div className="mb-10 flex flex-col gap-10">
-        <Banner />
+      <div className="mb-10 mt-5 flex flex-col gap-5">
         <MarqueeComponent />
+        <Banner />
       </div>
 
       <div className="w-full overflow-x-auto no-scrollbar">
@@ -98,7 +98,7 @@ const Home = () => {
       </div>
       <div className="mt-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-          Why Choose US ?
+          Why Choose Us ?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {BenefitDetails.map((benefit, index) => (
@@ -107,7 +107,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Offers!!</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Offers</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {Offerdetails.map((offer, index) => (
             <OffersCard key={index} offer={offer} bgColor={offer.bgColor} />
@@ -132,11 +132,11 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-12">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           Frequently Asked Questions
         </h2>
         <div className="w-full max-w-7xl mx-auto">
-          <FAQ /> 
+          <FAQ />
         </div>
       </div>
     </div>

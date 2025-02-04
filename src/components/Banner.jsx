@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import banner from "../assets/images/banner.jpg"
+import bed_june_web from "../assets/images/bed_june_web.webp"
+import Price_drop from "../assets/images/Price_drop_HP_Web_july.webp"
+import sofa_june_web from "../assets/images/sofa_june_web.webp"
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,21 +10,21 @@ const Banner = () => {
   const banners = [
     {
       id: 1,
-      image: banner,
+      image: bed_june_web,
       title: "Summer Collection",
       description: "Up to 50% off on all summer items",
       buttonText: "Shop Now"
     },
     {
       id: 2,
-      image: banner,
+      image: Price_drop,
       title: "New Arrivals",
       description: "Check out our latest furniture collection",
       buttonText: "Discover More"
     },
     {
       id: 3,
-      image: banner,
+      image: sofa_june_web,
       title: "Special Offer",
       description: "Free delivery on orders above $500",
       buttonText: "Learn More"
@@ -58,7 +60,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative w-full h-96 overflow-hidden rounded-xl">
+    <div className="relative w-full h-full overflow-hidden rounded-xl">
       <div
         className="flex transition-transform duration-500 ease-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -71,7 +73,7 @@ const Banner = () => {
             <img
               src={banner.image}
               alt={banner.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             {/* Content Overlay (Initially Hidden) */}
             <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white p-8 
