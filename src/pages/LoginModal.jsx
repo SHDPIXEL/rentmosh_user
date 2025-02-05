@@ -144,7 +144,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 <div className="flex items-center space-x-2">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 accent-blue-600"
+                    className="w-4 h-4 accent-red-800"
                     required
                   />
                   <p className="text-xs text-gray-600">
@@ -152,7 +152,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     <a
                       href="/terms-and-conditions"
                       target="_blank"
-                      className="text-blue-600 hover:underline"
+                      className="text-red-800 hover:underline"
                     >
                       terms and conditions{" "}
                     </a>
@@ -160,7 +160,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     <a
                       href="/privacy-policy"
                       target="_blank"
-                      className="text-blue-600 hover:underline"
+                      className="text-red-800 hover:underline"
                     >
                       privacy policies
                     </a>
@@ -169,7 +169,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
                 <button
                   type="submit"
-                  className="w-full py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 hover:shadow-lg transition-all"
+                  className="w-full py-2 bg-red-800 text-white rounded-lg cursor-pointer hover:bg-red-700 hover:shadow-lg transition-all"
                 >
                   {isSignup ? "Sign Up" : "Login"}
                 </button>
@@ -179,7 +179,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                   <p>
                     Already have an account?{" "}
                     <span
-                      className="text-blue-600 cursor-pointer"
+                      className="text-red-800 cursor-pointer"
                       onClick={() => setIsSignup(false)}
                     >
                       Login here
@@ -189,7 +189,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                   <p>
                     Don't have an account?{" "}
                     <span
-                      className="text-blue-600 cursor-pointer"
+                      className="text-red-800 cursor-pointer"
                       onClick={() => setIsSignup(true)}
                     >
                       Sign up

@@ -71,7 +71,7 @@ const WishlistPage = () => {
           <p className="text-gray-600">{wishlistItems.length} items</p>
         </div>
         {wishlistItems.length > 0 && (
-          <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+          <button className="text-red-800 hover:text-red-700 text-sm font-medium">
             Move All to Cart
           </button>
         )}

@@ -2,9 +2,9 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="bg-white min-h-screen py-6 px-6 md:px-20">
-      <div className="text-center justify-center items-center bg-white py-6">
-        <h2 className="text-3xl font-bold text-black">Privacy Policy</h2>
+    <div className="bg-white px-6 md:px-20">
+      <div className="flex items-center justify-center left-0 h-30 bg-white border-b border-dashed border-gray-400 py-6 text-center">
+        <h2 className="text-3xl font-bold text-red-800">Privacy Policy</h2>
       </div>
 
       <div className="container mx-auto mt-6 text-gray-700">
@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
           We’re RentMosho, an online rental solution for your furnishing needs.
         </p>
         <p className="mt-4">
-          <span className="text-red-500 font-semibold">RentMosho</span> is a
+          <span className="text-red-800 font-semibold">RentMosho</span> is a
           platform designed to provide easy access to rental furniture,
           electronics, and more. We prioritize your privacy and ensure that your
           personal data is protected.
@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
         <p className="mt-2">
           If you have any questions regarding this policy, feel free to reach
           out to us at
-          <a href="mailto:support@rentmosho.com" className="text-blue-500">
+          <a href="mailto:support@rentmosho.com" className="text-red-800">
             {" "}
             support@rentmosho.com
           </a>

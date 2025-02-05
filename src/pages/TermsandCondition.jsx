@@ -2,10 +2,10 @@ import React from "react";
 
 const TermsAndConditions = () => {
   return (
-    <div className="bg-white min-h-screen px-6 md:px-20">
+    <div className="bg-white px-6 md:px-20">
       {/* Full-Width Gradient Header */}
-      <div className="flex items-center justify-center left-0 h-35 bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 py-6 text-center">
-        <h2 className="text-3xl font-bold text-black">Terms and Conditions</h2>
+      <div className="flex items-center justify-center left-0 h-30 bg-white border-b border-dashed border-gray-400 py-6 text-center">
+        <h2 className="text-3xl font-bold text-red-800">Terms and Conditions</h2>
       </div>
 
       {/* Content Container */}
@@ -57,7 +57,7 @@ const TermsAndConditions = () => {
         <p className="mt-2">
           If you have any questions regarding these terms, please reach out to
           us at
-          <a href="mailto:support@rentmosho.com" className="text-blue-500">
+          <a href="mailto:support@rentmosho.com" className="text-red-800">
             {" "}support@rentmosho.com
           </a>
           .

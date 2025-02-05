@@ -64,8 +64,18 @@ const ProductPage = () => {
         },
       ],
       offerDetails: [
-        { title: "Get 10% Off", icon: { Tag }, code: "SOFA10" },
-        { title: "Free Delivery", icon: { Gift }, code: "FREESHIP" },
+        {
+          title: "Get 10% Off",
+          icon: { Tag },
+          code: "SOFA10",
+          description: "Save 10% on all sofa purchases!",
+        },
+        {
+          title: "Free Delivery",
+          icon: { Gift },
+          code: "FREESHIP",
+          description: "Enjoy free delivery on all orders above ₹500!",
+        },
       ],
     },
   ];
@@ -325,29 +335,37 @@ const ProductPage = () => {
                     <Gift size={24} className="text-green-500" />
                   ) : null}
                   <div>
-                    <h4 className="font-bold mb-1 text-yellow-400">
-                      {product.offerDetails[currentOfferIndex].title}
-                    </h4>
-                    {/* {copy code} */}
+                    {/* Code with copy functionality */}
                     <div
-                      className="mt-1 flex items-center gap-2 px-4 py-2 bg-yellow-500 text-black text-sm font-semibold rounded-md cursor-pointer"
+                      className="flex items-center gap-2 text-black text-sm font-semibold rounded-md cursor-pointer"
                       onClick={() =>
                         copyToClipboard(
                           product.offerDetails[currentOfferIndex].code
                         )
                       }
                     >
-                      Code: {product.offerDetails[currentOfferIndex].code}
-                      <Copy
-                        className="w-4 h-4 text-black cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevents triggering parent click
-                          copyToClipboard(
-                            product.offerDetails[currentOfferIndex].code
-                          );
-                        }}
-                      />
+                      <div className="flex justify-center items-center">
+                        <h4 className="font-bold mb-1  text-yellow-400">
+                          {product.offerDetails[currentOfferIndex].title}
+                        </h4>
+                      </div>
+                      <div className="flex bg-yellow-400 font-semibold rounded-md p-2 justify-center items-center">
+                        Code: {product.offerDetails[currentOfferIndex].code}
+                        <Copy
+                          className="w-4 h-4 text-black cursor-pointer ml-1"
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevents triggering parent click
+                            copyToClipboard(
+                              product.offerDetails[currentOfferIndex].code
+                            );
+                          }}
+                        />
+                      </div>
                     </div>
+                    {/* Description for the offer */}
+                    <p className="mt-2 text-xs text-yellow-400">
+                      {product.offerDetails[currentOfferIndex].description}
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -368,10 +386,10 @@ const ProductPage = () => {
             </div>
 
             <div className="flex space-x-4 pt-6">
-              <button className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+              <button className="flex-1 bg-red-800 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition duration-300">
                 Buy Now
               </button>
-              <button className="flex-1 border-2 border-blue-600 text-blue-600 py-3 px-6 rounded-lg hover:bg-blue-50">
+              <button className="flex-1 border-2 border-red-800 text-red-800 py-3 px-6 rounded-lg hover:bg-red-50">
                 Add to Cart
               </button>
             </div>
@@ -392,7 +410,7 @@ const ProductPage = () => {
                 <div className="bg-gray-100 border border-gray-100 overflow-hidden bg-opacity-100 p-6 rounded-xl transform transition duration-300 hover:scale-101 hover:shadow-sm">
                   <div className="flex items-center mb-4">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
-                      <i className="fas fa-check text-xl text-blue-600"></i>
+                      <i className="fas fa-check text-xl text-red-800"></i>
                     </div>
                     <h4 className="ml-4 text-lg font-semibold text-black">
                       {benefit.title}

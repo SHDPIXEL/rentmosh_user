@@ -7,7 +7,7 @@ const Modal = ({ isOpen, onClose, cityList, onCitySelect }) => {
                 {/* X Icon in the top-right corner */}
                 <button
                     onClick={onClose}
-                    className="absolute top-7 right-7 text-red-700 text-2xl"
+                    className="absolute top-7 right-7 text-red-800 text-2xl"
                 >
                     &times;
                 </button>

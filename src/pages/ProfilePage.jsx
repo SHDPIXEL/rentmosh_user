@@ -3,6 +3,7 @@ import { Download, Pencil, Trash2 } from "lucide-react";
 
 const ProfilePage = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
+  const [addresses, setAddresses] = useState([]); // Initialize addresses as an empty array
   const [addressData, setAddressData] = useState({
     fullName: "",
     contact: "",
@@ -12,40 +13,43 @@ const ProfilePage = () => {
     city: "",
   });
   const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setAddressData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setAddressData({ ...addressData, [e.target.name]: e.target.value });
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (index) => {
+    const updatedAddresses = addresses.filter((_, i) => i !== index);
+    setAddresses(updatedAddresses);
+  };
+
+  const handleEditClick = (index) => {
+    setIsEditing(true);
+    setEditIndex(index);
+    setAddressData(addresses[index]);
+  };
+
+  const handleSubmit = () => {
+    if (isEditing) {
+      // Update existing address
+      const updatedAddresses = [...addresses];
+      updatedAddresses[editIndex] = addressData;
+      setAddresses(updatedAddresses);
+      setIsEditing(false);
+      setEditIndex(null);
+    } else {
+      // Add new address
+      setAddresses([...addresses, addressData]);
+    }
     setAddressData({
       fullName: "",
       contact: "",
       address: "",
       landmark: "",
       postalCode: "",
-      city: ""
+      city: "",
     });
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-    setAddressData({
-      fullName: "John Doe",
-      contact: "85xxxxxx52",
-      address: "12 Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      landmark: "Near Park",
-      postalCode: "45xx19",
-      city: "Bangalore",
-    });
-  };
-
-  const handleSubmit = () => {
-    setIsEditing(false);
   };
 
   const colors = {
@@ -123,38 +127,45 @@ const ProfilePage = () => {
               />
             </div>
           ))}
-          <div className="w-full">
+          <div className="w-2/4">
             <button
               onClick={handleSubmit}
-              className="w-full bg-blue-600 text-white p-2 rounded shadow-md hover:bg-blue-700 transition"
+              className="w-full bg-red-800 text-white p-2 rounded shadow-md hover:bg-red-700 transition"
             >
               {isEditing ? "Update" : "Submit"}
             </button>
           </div>
         </div>
 
-        {/* Address Details Card */}
-        <div className="bg-white rounded-xl h-35 mt-6 border border-gray-200 shadow-sm w-full p-4 hover:shadow-md">
-          <div className="flex justify-between items-center">
-            <p className="font-bold">{addressData.fullName}</p>
-            <div className="flex space-x-2">
-              <Pencil
-                className="cursor-pointer text-gray-600 hover:text-blue-500 transition"
-                size={20}
-                onClick={handleEditClick}
-              />
-              <Trash2
-                className="cursor-pointer text-gray-600 hover:text-red-500 transition"
-                size={20}
-                onClick={handleDeleteClick}
-              />
+        {/* Address List */}
+        <div className="space-y-4 w-full">
+          {addresses.map((address, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl border border-gray-200 shadow-sm w-full p-4 hover:shadow-md"
+            >
+              <div className="flex justify-between items-center">
+                <p className="font-bold text-red-800">{address.fullName}</p>
+                <div className="flex space-x-2">
+                  <Pencil
+                    className="cursor-pointer text-gray-600 hover:text-blue-500 transition"
+                    size={20}
+                    onClick={() => handleEditClick(index)}
+                  />
+                  <Trash2
+                    className="cursor-pointer text-gray-600 hover:text-red-500 transition"
+                    size={20}
+                    onClick={() => handleDeleteClick(index)}
+                  />
+                </div>
+              </div>
+              <p className="text-gray-500">{address.contact}</p>
+              <p className="truncate mt-2 text-gray-500">{address.address}</p>
+              <p className="text-gray-500">
+                {address.city}, {address.postalCode}
+              </p>
             </div>
-          </div>
-          <p className="text-gray-500">{addressData.contact}</p>
-          <p className="truncate mt-2 text-gray-500">{addressData.address}</p>
-          <p className="text-gray-500">
-            {addressData.city}, {addressData.postalCode}
-          </p>
+          ))}
         </div>
       </div>
     ),
@@ -238,7 +249,7 @@ const ProfilePage = () => {
           )
         )}
         <div className="w-1/4">
-          <button className="w-full bg-blue-600 text-white p-2 rounded shadow-md hover:bg-blue-700 transition">
+          <button className="w-full bg-red-800 text-white p-2 rounded shadow-md hover:bg-red-700 transition">
             Submit
           </button>
         </div>
@@ -250,13 +261,13 @@ const ProfilePage = () => {
           <div key={placeholder} className="w-2/4">
             <input
               key={placeholder}
-              className="w-full border border-gray-200 focus:outline-none focus:border-gray-400 hover:border-gray-400 shadow-sm p-2 rounded"
+              className="w-full border border-gray-200 focus:outline-none  focus:border-gray-400 hover:border-gray-400 shadow-sm p-2 rounded"
               placeholder={placeholder}
             />
           </div>
         ))}
         <div className="w-1/4">
-          <button className="w-full bg-blue-600 text-white p-2 rounded shadow-md hover:bg-blue-700 transition">
+          <button className="w-full bg-red-800 text-white p-2 rounded shadow-md hover:bg-red-700 transition">
             Submit
           </button>
         </div>
@@ -278,7 +289,7 @@ const ProfilePage = () => {
             <button
               key={key}
               className={`w-full text-left p-3 rounded-lg transition ${
-                activeSection === key ? "bg-blue-600 text-white" : "bg-gray-200"
+                activeSection === key ? "bg-red-800 hover:bg-red-700 text-white" : "bg-gray-200"
               }`}
               onClick={() => setActiveSection(key)}
             >

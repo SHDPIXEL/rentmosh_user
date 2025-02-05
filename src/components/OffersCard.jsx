@@ -52,6 +52,11 @@ const OffersCard = ({ offer }) => {
           {/* Title */}
           <h4 className="text-md font-semibold text-yellow-500">{offer.title}</h4>
 
+          {/* Description */}
+          {offer.description && (
+            <p className="mt-2 text-xs text-center text-yellow-400">{offer.description}</p>
+          )}
+
           {/* Offer Code */}
           {offer.code && (
             <div

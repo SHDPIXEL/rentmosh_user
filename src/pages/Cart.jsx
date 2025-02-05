@@ -281,7 +281,7 @@ const CartPage = () => {
 
               <button
                 onClick={handleCheckout}
-                className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 flex items-center justify-center space-x-2"
+                className="mt-6 w-full bg-red-800 text-white py-3 rounded-lg hover:bg-red-700 flex items-center justify-center space-x-2"
               >
                 {loading ? (
                   <>

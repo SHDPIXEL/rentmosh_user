@@ -29,7 +29,7 @@ const BookedPage = () => {
         <div className="flex justify-center w-full mt-6">
           <button
             onClick={() => navigate("/")}
-            className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 flex items-center space-x-2 transition duration-300"
+            className="bg-red-800 text-white py-2 px-6 rounded-lg hover:bg-red-700 flex items-center space-x-2 transition duration-300"
           >
             <span>Back to Home</span>
             <ArrowRight className="w-5 h-5" />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RentmoshLogo from "../assets/images/Rentmosh-logo.png"
 import { Heart, ShoppingCart, MapPin, CircleUser } from "lucide-react";
 import SearchBar from "./ui/SearchBar";
 import Modal from "./ui/CityModal";
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 import WishlistPage from "../pages/WishList";
 import LoginModal from "../pages/LoginModal"; // Import the login modal component
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Header = () => {
   const [selectedCity, setSelectedCity] = useState("Mumbai");
@@ -48,19 +50,19 @@ const Header = () => {
   return (
     <header>
       <div className="flex items-center justify-center px-30 h-16 shadow-sm">
-        <div className="flex items-center justify-between gap-37 space-x-10 ">
+        <div className="flex items-center justify-between gap-33 space-x-10 ">
           <div className="flex items-center space-x-8 ">
             <Link to="/">
-              <div className="poppins-bold text-2xl text-gray-600">
-                RentMosh
-              </div>
+              {/* Replace text with the SVG */}
+              <img
+                src={RentmoshLogo} // Path to your SVG
+                alt="RentMosh Logo"
+                className="h-8" // Adjust the height as needed
+              />
             </Link>
-            <div className="flex items-center p-2 hover:bg-gray-100 rounded-md">
-              <i className="fas fa-map-pin text-black w-5 h-5"></i>
-              <div
-                className="text-gray-700 cursor-pointer"
-                onClick={() => setIsModalOpen(true)}
-              >
+            <div className="flex items-center p-2 hover:bg-gray-100 rounded-md text-gray-700 cursor-pointer" onClick={() => setIsModalOpen(true)}>
+              <FaMapMarkerAlt className="text-gray-700 mr-1" size={17} />
+              <div>
                 {selectedCity}
               </div>
             </div>
@@ -71,7 +73,7 @@ const Header = () => {
               <Dropdown
                 key={index}
                 options={category.items}
-                selectedOption={selectedCategories[category.label] || null}
+                // selectedOption={selectedCategories[category.label] || null}
                 onSelect={(item) => handleCategorySelect(category.label, item)}
                 label={category.label}
               />
@@ -82,7 +84,10 @@ const Header = () => {
               <SearchBar />
             </div>
             <div className="flex items-center space-x-4">
-              <Link to={"/whishlist"} className="hover:bg-gray-100 p-2 rounded-md">
+              <Link
+                to={"/whishlist"}
+                className="hover:bg-gray-100 p-2 rounded-md"
+              >
                 <Heart className="w-5 h-5 text-gray-700 cursor-pointer " />
               </Link>
               <Link to={"/cart"} className="hover:bg-gray-100 p-2 rounded-md">
@@ -116,3 +121,4 @@ const Header = () => {
 };
 
 export default Header;
+  

@@ -9,6 +9,9 @@ import ProfilePage from './pages/ProfilePage'
 import BookedPage from './pages/BookedPage'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsandCondition from './pages/TermsandCondition'
+import RentalAgreement from './pages/rentalagreement'
+import AboutUs from './pages/aboutUs'
+import ContactUs from './pages/contactUs'
 import { Navigate } from 'react-router-dom'
 
 import './App.css'
@@ -28,6 +31,9 @@ function App() {
           <Route path='/booked' element={<BookedPage />} />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/terms-condition' element={<TermsandCondition />} />
+          <Route path='/rental-agreement' element={<RentalAgreement />} />
+          <Route path='/aboutUs' element={<AboutUs />} />
+          <Route path='/contactUs' element={<ContactUs />} />
           <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
