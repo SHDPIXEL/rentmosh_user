@@ -118,7 +118,7 @@ const Home = () => {
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           Testimonials
         </h2>
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full mx-auto">
           {/* Testimonial Component */}
           <Testimonial />
         </div>

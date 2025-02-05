@@ -102,7 +102,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto mb-5">
+    <div className="relative w-full mx-auto mb-5">
       {/* Navigation Arrows (Outside Carousel) */}
 
       {/* Carousel Container */}
