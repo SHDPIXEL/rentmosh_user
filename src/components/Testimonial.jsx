@@ -123,7 +123,7 @@ const Testimonials = () => {
                     alt={testimonial.name}
                     className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md"
                   />
-                  <p className="text-gray-700 text-sm italic">
+                  <p className="text-gray-700 text-xs italic">
                     "{testimonial.review}"
                   </p>
                   <div className="text-center">
