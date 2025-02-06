@@ -124,7 +124,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+        <h2 className="text-2xl md:text-left font-semibold text-gray-800 mb-6">
           Your Next Rental Is Just 4 Steps Away!
         </h2>
         <div className="w-full max-w-7xl mx-auto">

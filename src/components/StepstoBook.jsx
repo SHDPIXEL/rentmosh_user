@@ -35,25 +35,17 @@ const cards = [
 
 const Card = ({ title, description, icon, number }) => {
   return (
-    <div className="relative p-6 w-full sm:w-50 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+    <div className="relative p-4 sm:p-6 w-full sm:w-50 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
       {/* Icon */}
       <div className="bg-blue-100 p-3 rounded-full">
         {icon ? (
-          <img src={icon} alt="icon" className="w-12 h-12" />
+          <img src={icon} alt="icon" className="w-10 h-10 sm:w-12 sm:h-12" />
         ) : (
-          <FaCheckCircle className="w-12 h-12 text-green-500" /> // Use FaCheckCircle for the "Delivered" card
+          <FaCheckCircle className="w-10 h-10 sm:w-12 sm:h-12 text-green-500" /> // Use FaCheckCircle for the "Delivered" card
         )}
       </div>
       {/* Title */}
-      <h3 className="text-lg font-semibold text-gray-900 mt-4">{title}</h3>
-      {/* Description */}
-      {/* <p className="text-gray-500 text-sm mt-2">{description}</p> */}
-      {/* Number Indicator */}
-      {/* <div className="absolute top-2 right-4 text-6xl font-bold opacity-20">
-        <span className="bg-gradient-to-b from-gray-400 via-gray-500 to-indigo-700 text-transparent bg-clip-text">
-          {number}
-        </span>
-      </div> */}
+      <h3 className="text-md sm:text-lg font-semibold text-gray-900 mt-4">{title}</h3>
     </div>
   );
 };
@@ -61,25 +53,17 @@ const Card = ({ title, description, icon, number }) => {
 const CardsPage = () => {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-8">
-      {/* Card Layout with horizontal arrow-like line between cards */}
-      <div className="flex items-center justify-center gap-8 relative">
+      {/* Responsive Card Layout */}
+      <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 relative w-full max-w-4xl">
         {cards.map((card, index) => (
-          <div key={card.id} className="flex items-center">
+          <div key={card.id} className="flex flex-col md:flex-row items-center">
             {/* Display card */}
             <Card {...card} />
             {/* Display horizontal arrow-like line between cards except after the last card */}
             {index < cards.length - 1 && (
-              <div className="flex items-center">
-                <div
-                  className="w-24 h-0.5 bg-gray-300"
-                  style={{
-                    transform: "rotate(180deg)",
-                    transformOrigin: "center",
-                  }}
-                />
-                <div>
-                  <ChevronRight className="h-5 w-5 text-gray-300" />
-                </div>
+              <div className="hidden md:flex items-center">
+                <div className="w-12 sm:w-24 h-0.5 bg-gray-300" />
+                <ChevronRight className="h-5 w-5 text-gray-300" />
               </div>
             )}
           </div>

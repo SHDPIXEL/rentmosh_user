@@ -3,7 +3,7 @@ const Modal = ({ isOpen, onClose, cityList, onCitySelect }) => {
 
     return (
         <div className="fixed inset-0 bg-[#00000099] flex items-center justify-center z-50">
-            <div className="bg-white p-8 rounded-lg shadow-lg relative">
+            <div className="bg-white md:p-8 p-4 rounded-lg shadow-lg relative mx-3">
                 {/* X Icon in the top-right corner */}
                 <button
                     onClick={onClose}
@@ -12,7 +12,7 @@ const Modal = ({ isOpen, onClose, cityList, onCitySelect }) => {
                     &times;
                 </button>
 
-                <div className="text-lg font-bold text-gray-700 mb-4">Select a City</div>
+                <div className="md:text-lg text-md font-bold text-gray-700 mb-4">Select a City</div>
                 <div className="space-y-4 grid grid-cols-2 gap-x-10">
                     {cityList.map((city, index) => (
                         <div 
@@ -22,10 +22,10 @@ const Modal = ({ isOpen, onClose, cityList, onCitySelect }) => {
                             <img
                                 src={city.img}
                                 alt={city.name}
-                                className="w-16 h-16 aspect-3/2 rounded-md cursor-pointer"
+                                className="md:w-16 md:h-16 w-12 h-12 aspect-3/2 rounded-md cursor-pointer"
                             />
                             <div
-                                className="text-gray-700 cursor-pointer"
+                                className="text-gray-700 md:text-base text-sm cursor-pointer"
                             >
                                 {city.name}
                             </div>

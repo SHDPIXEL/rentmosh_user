@@ -96,14 +96,14 @@ const Banner = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 
+        className="absolute left-4 top-1/2 -translate-y-1/2 md:p-2 rounded-full bg-white/80 
           hover:bg-white transition-colors duration-300"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 
+        className="absolute right-4 top-1/2 -translate-y-1/2 md:p-2 rounded-full bg-white/80 
           hover:bg-white transition-colors duration-300"
       >
         <ChevronRight className="w-6 h-6" />

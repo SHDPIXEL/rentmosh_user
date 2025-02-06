@@ -5,7 +5,7 @@ import {
   Heart,
   ArrowRight,
   CheckCircle,
-  Loader 
+  Loader
 } from "lucide-react";
 import { useNavigate } from "react-router-dom"; // Import navigation
 import sofa from "../assets/images/sofa.png"; // Add an empty cart image to your assets
@@ -118,7 +118,7 @@ const CartPage = () => {
               >
                 <div className="flex items-center space-x-4">
                   {/* Product Image */}
-                  <div className="w-32 h-32 flex-shrink-0">
+                  <div className="md:w-32 md:h-32 w-28 h-28 flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -128,12 +128,12 @@ const CartPage = () => {
 
                   {/* Product Info */}
                   <div className="flex-grow">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    <h3 className="md:text-lg text-base font-semibold text-gray-800 mb-2">
                       {item.title}
                     </h3>
 
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-xl font-bold text-gray-900">
+                      <span className="md:text-xl text-sm font-bold text-gray-900">
                         ₹
                         {((item.price * (100 - item.discount)) / 100).toFixed(
                           2
@@ -141,17 +141,17 @@ const CartPage = () => {
                       </span>
                       {item.discount > 0 && (
                         <>
-                          <span className="text-sm text-gray-500 line-through">
+                          <span className="md:text-sm text-xs text-gray-500 line-through">
                             ₹{item.price}
                           </span>
-                          <span className="text-sm text-red-500 font-medium">
+                          <span className="md:text-sm text-xs text-red-500 font-medium">
                             {item.discount}% OFF
                           </span>
                         </>
                       )}
                     </div>
 
-                    <div className="flex items-center space-x-2 text-sm">
+                    <div className="flex items-center space-x-2 md:text-sm text-xs">
                       <span className="text-gray-600">
                         Tenure: {item.tenure}
                       </span>
@@ -171,11 +171,10 @@ const CartPage = () => {
                       className="p-2 text-gray-400 hover:text-red-500 transition-colors duration-300"
                     >
                       <Heart
-                        className={`w-5 h-5 ${
-                          likedItems[item.id]
+                        className={`w-5 h-5 ${likedItems[item.id]
                             ? "fill-red-500 text-red-500"
                             : "text-gray-400"
-                        }`}
+                          }`}
                       />
                     </button>
                   </div>
@@ -194,7 +193,7 @@ const CartPage = () => {
               </h2>
               <div className="space-y-4">
                 {/* Total Items Section */}
-                <div>
+                <div className="md:text-base text-sm">
                   <div className="flex justify-between space-y-1">
                     <span className="text-gray-600">Total Items</span>
                     <span className="font-semibold">
@@ -220,58 +219,61 @@ const CartPage = () => {
                 </div>
                 <div className=" border-t-2 border-dashed border-gray-300 my-4"></div>
                 {/* Total Amount (Before Discount) */}
-                <div className="flex justify-between pt-2">
-                  <span className="text-gray-600">Total Amount</span>
-                  <span className="font-semibold text-gray-900">
-                    ₹
-                    {cartItems
-                      .reduce(
-                        (total, item) => total + item.price * item.tenure,
-                        0
-                      )
-                      .toFixed(2)}
-                  </span>
-                </div>
 
-                {/* Discount Section */}
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Discount</span>
-                  <span className="font-semibold text-red-500">
-                    -₹
-                    {cartItems
-                      .reduce((total, item) => {
-                        const discountAmount =
-                          ((item.price * item.discount) / 100) * item.tenure;
-                        return total + discountAmount;
-                      }, 0)
-                      .toFixed(2)}
-                  </span>
-                </div>
+                <div className="md:text-base text-sm">
+                  <div className="flex justify-between pt-2">
+                    <span className="text-gray-600">Total Amount</span>
+                    <span className="font-semibold text-gray-900">
+                      ₹
+                      {cartItems
+                        .reduce(
+                          (total, item) => total + item.price * item.tenure,
+                          0
+                        )
+                        .toFixed(2)}
+                    </span>
+                  </div>
 
-                {/* Total Payable Section */}
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Total Payable</span>
-                  <span className="font-semibold text-gray-900">
-                    ₹{calculateTotal().toFixed(2)}
+                  {/* Discount Section */}
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Discount</span>
+                    <span className="font-semibold text-red-500">
+                      -₹
+                      {cartItems
+                        .reduce((total, item) => {
+                          const discountAmount =
+                            ((item.price * item.discount) / 100) * item.tenure;
+                          return total + discountAmount;
+                        }, 0)
+                        .toFixed(2)}
+                    </span>
+                  </div>
+
+                  {/* Total Payable Section */}
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Total Payable</span>
+                    <span className="font-semibold text-gray-900">
+                      ₹{calculateTotal().toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+                {/* GST Section */}
+                <div className="flex justify-between mt-3">
+                  <span className="text-gray-600">GST (18%)</span>
+                  <span className="font-semibold text-green-600">
+                    +₹{((calculateTotal() * 18) / 100).toFixed(2)}
                   </span>
                 </div>
-              </div>
-              {/* GST Section */}
-              <div className="flex justify-between mt-3">
-                <span className="text-gray-600">GST (18%)</span>
-                <span className="font-semibold text-green-600">
-                  +₹{((calculateTotal() * 18) / 100).toFixed(2)}
-                </span>
               </div>
 
               <div className=" border-t-2 border-dashed border-gray-300 my-6"></div>
 
               {/* Total Price Calculation */}
               <div className="flex justify-between">
-                <span className="text-lg font-semibold text-gray-900">
+                <span className="md:text-lg text-md font-semibold text-gray-900">
                   Total
                 </span>
-                <span className="text-lg font-semibold text-gray-900">
+                <span className="md:text-lg text-md font-semibold text-gray-900">
                   ₹
                   {(calculateTotal() + (calculateTotal() * 18) / 100).toFixed(
                     2

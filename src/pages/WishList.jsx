@@ -79,7 +79,7 @@ const WishlistPage = () => {
 
       {/* Wishlist Items */}
       {wishlistItems.length > 0 ? (
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
           {wishlistItems.map((item) => (
             <div
               key={item.id}
@@ -87,7 +87,7 @@ const WishlistPage = () => {
             >
               <div className="flex items-center space-x-4">
                 {/* Product Image */}
-                <div className="w-32 h-32 flex-shrink-0">
+                <div className="md:w-32 md:h-32 w-28 h-28 flex-shrink-0">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -97,27 +97,27 @@ const WishlistPage = () => {
 
                 {/* Product Info */}
                 <div className="flex-grow">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="md:text-lg text-base font-semibold text-gray-800 mb-2">
                     {item.title}
                   </h3>
 
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-xl font-bold text-gray-900">
+                    <span className="md:text-xl text-sm font-bold text-gray-900">
                     ₹{(item.price * (100 - item.discount) / 100).toFixed(2)}
                     </span>
                     {item.discount > 0 && (
                       <>
-                        <span className="text-sm text-gray-500 line-through">
+                        <span className="md:text-sm text-xs text-gray-500 line-through">
                           ${item.price}
                         </span>
-                        <span className="text-sm text-red-500 font-medium">
+                        <span className="md:text-sm text-xs text-red-500 font-medium">
                           {item.discount}% OFF
                         </span>
                       </>
                     )}
                   </div>
 
-                  <div className="flex items-center space-x-2 text-sm">
+                  <div className="flex items-center space-x-2 md:text-sm text-xs">
                     <Clock className="w-4 h-4 text-gray-400" />
                     <span className="text-gray-600">
                       Added on {new Date(item.addedDate).toLocaleDateString()}

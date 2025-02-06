@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FAQS from "../assets/images/faqs.jpg"
+import FAQS from "../assets/images/faqs.jpg";
 
 const faqs = [
   {
@@ -48,18 +48,18 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="faq-section py-8 px-4 flex justify-between items-start">
-      {/* Static Image on the left */}
-      <div className="faq-image w-1/3 justify-center">
+    <div className="faq-section py-8 px-4 flex flex-col lg:flex-row justify-between items-start">
+      {/* Static Image - Only for larger screens */}
+      <div className="hidden lg:block w-1/3">
         <img
-          src={FAQS} // Static image URL
+          src={FAQS}
           alt="FAQ Icon"
           className="w-full h-auto object-cover rounded-md"
         />
       </div>
 
-      {/* FAQ Content on the right */}
-      <div className="faq-list w-2/3 space-y-6">
+      {/* FAQ Content */}
+      <div className="w-full lg:w-2/3 space-y-6">
         {faqs.map((faq, index) => (
           <div
             key={faq.id}
@@ -69,7 +69,7 @@ const FAQSection = () => {
               className="faq-question flex justify-between items-center cursor-pointer"
               onClick={() => toggleAnswer(index)}
             >
-              <h3 className="text-xl text-gray-700">
+              <h3 className="text-lg sm:text-xl text-gray-700">
                 {faq.question}
               </h3>
               <svg
@@ -90,11 +90,7 @@ const FAQSection = () => {
               </svg>
             </div>
             {activeIndex === index && (
-              <p
-                className={`faq-answer text-gray-600 mt-4 ${
-                  activeIndex === index ? "bg-gray-100 p-4 rounded-lg" : ""
-                }`}
-              >
+              <p className="faq-answer text-gray-600 mt-4 bg-gray-100 p-4 rounded-lg">
                 {faq.answer}
               </p>
             )}
