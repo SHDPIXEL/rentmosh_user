@@ -155,6 +155,21 @@ const ProductPage = () => {
     );
   };
 
+  const priceOptions = {
+    3: 1000, // Price for 3 months
+    6: 1800, // Price for 6 months
+    12: 3000, // Price for 12 months
+  };
+
+  const [selectedMonth, setSelectedMonth] = useState(3);
+  const [selectedPrice, setSelectedPrice] = useState(priceOptions[3]); // Default price for 3 months
+
+  const handleMonthChange = (event) => {
+    const month = Number(event.target.value);
+    setSelectedMonth(month);
+    setSelectedPrice(priceOptions[month]); // Update price based on selected month
+  };
+
   const copyToClipboard = async (code) => {
     try {
       if (!navigator.clipboard) {
@@ -309,16 +324,39 @@ const ProductPage = () => {
             )}
 
             <div className="border-t pt-6 mb-0">
-              <h3 className="text-lg font-semibold mb-4">Tags</h3>
-              <div className="flex flex-wrap gap-4">
-                {product.Tags.map((spec, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-100 text-black font-medium text-md py-2 px-4 rounded-full hover:bg-gray-200 transition duration-300"
-                  >
-                    {spec.value}
-                  </div>
-                ))}
+              <h3 className="text-lg font-semibold mb-4">
+                Select Tenure & Price
+              </h3>
+              <div className="flex flex-wrap gap-4 items-center">
+                {/* Month Selection */}
+                <select
+                  value={selectedMonth}
+                  onChange={handleMonthChange}
+                  className="bg-gray-100 text-black font-medium text-md py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300"
+                >
+                  {Object.keys(priceOptions).map((month) => (
+                    <option key={month} value={month}>
+                      {month} Months
+                    </option>
+                  ))}
+                </select>
+
+                {/* Price Selection */}
+                <select
+                  value={selectedPrice}
+                  className="bg-gray-100 text-black font-medium text-md py-2 px-4 rounded-lg cursor-pointer appearance-none"
+                  disabled
+                >
+                  {Object.entries(priceOptions).map(([month, price]) => (
+                    <option
+                      key={month}
+                      value={price}
+                      selected={Number(month) === selectedMonth}
+                    >
+                      ₹{price}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
